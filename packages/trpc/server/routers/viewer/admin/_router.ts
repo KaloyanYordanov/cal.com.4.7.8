@@ -1,6 +1,7 @@
 import { authedAdminProcedure } from "../../../procedures/authedProcedure";
 import { importHandler, router } from "../../../trpc";
 import { ZCreateSelfHostedLicenseSchema } from "./createSelfHostedLicenseKey.schema";
+import { ZAdminGetAllBookingsSchema } from "./getAllBookings.schema";
 import { ZListMembersSchema } from "./listPaginated.schema";
 import { ZAdminLockUserAccountSchema } from "./lockUserAccount.schema";
 import { ZAdminRemoveTwoFactor } from "./removeTwoFactor.schema";
@@ -62,4 +63,11 @@ export const adminRouter = router({
       );
       return handler(opts);
     }),
+  getAllBookings: authedAdminProcedure.input(ZAdminGetAllBookingsSchema).query(async (opts) => {
+    const handler = await importHandler(
+      namespaced("getAllBookings"),
+      () => import("./getAllBookings.handler")
+    );
+    return handler(opts);
+  }),
 });

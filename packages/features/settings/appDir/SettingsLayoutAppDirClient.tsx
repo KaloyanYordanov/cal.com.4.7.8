@@ -131,6 +131,7 @@ const tabs: VerticalTabItemProps[] = [
       { name: "organizations", href: "/settings/admin/organizations" },
       { name: "lockedSMS", href: "/settings/admin/lockedSMS" },
       { name: "oAuth", href: "/settings/admin/oAuth" },
+      { name: "calendar", href: "/settings/admin/calendar" },
     ],
   },
 ];
